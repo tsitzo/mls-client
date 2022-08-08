@@ -15,6 +15,7 @@ import { useTheme } from "@react-navigation/native";
 import { AppStackParams } from "../types/navigation";
 import Typography from "../components/text/Typography";
 import { ThemeContext } from "../context/ThemeContext";
+import { AuthContext } from "../context/AuthContext";
 
 interface ILoginScreenProps {
   navigation: NativeStackNavigationProp<AppStackParams, "LoginScreen">;
@@ -23,6 +24,7 @@ interface ILoginScreenProps {
 const LoginScreen: FC<ILoginScreenProps> = ({ navigation }) => {
   const { colors } = useTheme();
   const { isDarkTheme } = useContext(ThemeContext);
+  const { login } = useContext(AuthContext);
 
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -86,7 +88,7 @@ const LoginScreen: FC<ILoginScreenProps> = ({ navigation }) => {
               opacity: buttonDisabled ? 0.4 : 1,
             },
           ]}
-          onPress={() => {}}
+          onPress={() => login({ email, password })}
         >
           <Text style={styles.loginText}>LOGIN</Text>
         </TouchableOpacity>

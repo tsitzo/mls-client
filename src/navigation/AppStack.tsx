@@ -10,12 +10,13 @@ import {
   RegisterScreen,
   SearchScreen,
 } from "../screens";
+import { AuthContext } from "../context/AuthContext";
 
 const Stack = createNativeStackNavigator<AppStackParams>();
 
 export const AppStack = () => {
   const { Navigator, Screen, Group } = Stack;
-  const token = false;
+  const { token } = useContext(AuthContext);
 
   const admin = false;
 
