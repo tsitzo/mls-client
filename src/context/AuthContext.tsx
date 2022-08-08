@@ -1,9 +1,8 @@
 import React, { createContext, FC, useEffect, useState } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { LoginCredentials, RegisterCredentials } from "../types";
 import api from "../api";
-import { multiGet, multiSet } from "../utils/AsyncStorage";
+import { multiGet, multiSet, removeMultiple } from "../utils/AsyncStorage";
 
 interface AuthContextState {
   userId: string | null;
@@ -91,9 +90,14 @@ export const AuthContextProvider: FC = ({ children }) => {
   };
 
   const logout = async () => {
-    await multiSet(["@MLS/Token", null], ["@MLS/UserId", null]);
-    setToken(null);
-    setUserId(null);
+    try {
+      await removeMultiple("@MLS/Token", "@MLS/UserID");
+
+      setToken(null);
+      setUserId(null);
+    } catch (error) {
+      setError(true);
+    }
   };
 
   const clearError = () => {

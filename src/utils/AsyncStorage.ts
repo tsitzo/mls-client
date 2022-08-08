@@ -19,3 +19,11 @@ export const multiGet = async (key1: string, key2: string) => {
   }
   return values;
 };
+
+export const removeMultiple = async (key1: string, key2: string) => {
+  try {
+    await AsyncStorage.multiRemove([key1, key2]);
+  } catch (error) {
+    console.log(error);
+  }
+};

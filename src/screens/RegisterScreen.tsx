@@ -17,6 +17,7 @@ import Typography from "../components/text/Typography";
 import { ThemeContext } from "../context/ThemeContext";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { AuthContext } from "../context/AuthContext";
 
 interface IRegisterScreenProps {
   navigation: NativeStackNavigationProp<AppStackParams, "RegisterScreen">;
@@ -25,6 +26,7 @@ interface IRegisterScreenProps {
 const RegisterScreen: FC<IRegisterScreenProps> = ({ navigation }) => {
   const { colors } = useTheme();
   const { isDarkTheme } = useContext(ThemeContext);
+  const { register } = useContext(AuthContext);
 
   const [email, setEmail] = useState<string>("");
   const [username, setUsername] = useState<string>("");
@@ -109,6 +111,7 @@ const RegisterScreen: FC<IRegisterScreenProps> = ({ navigation }) => {
               opacity: buttonDisabled ? 0.4 : 1,
             },
           ]}
+          onPress={() => register({ username, email, password })}
         >
           <Text style={styles.loginText}>REGISTER</Text>
         </TouchableOpacity>
