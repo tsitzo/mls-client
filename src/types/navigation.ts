@@ -3,7 +3,8 @@ export type AppStackParams = {
   RegisterScreen: undefined;
   HomeScreen: undefined;
   AdminScreen: undefined;
-  ProfileScreen: { id: string };
+  MyProfileScreen: undefined;
+  UserProfileScreen: { id: string };
   BookmarksScreen: undefined;
   PostDetailsScreen: { id: string };
   SearchScreen: undefined;

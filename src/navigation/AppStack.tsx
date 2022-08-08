@@ -6,9 +6,11 @@ import {
   BookmarksScreen,
   HomeScreen,
   LoginScreen,
+  MyProfileScreen,
   PostDetailsScreen,
   RegisterScreen,
   SearchScreen,
+  UserProfileScreen,
 } from "../screens";
 import { AuthContext } from "../context/AuthContext";
 
@@ -29,11 +31,25 @@ export const AppStack = () => {
         </Group>
       ) : (
         <Group>
-          <Screen name="HomeScreen" component={HomeScreen} />
+          <Screen
+            name="HomeScreen"
+            component={HomeScreen}
+            options={{ title: "" }}
+          />
           {admin && <Screen name="AdminScreen" component={AdminScreen} />}
-          <Screen name="BookmarksScreen" component={BookmarksScreen} />
+          <Screen
+            name="BookmarksScreen"
+            component={BookmarksScreen}
+            options={{ headerTitle: "Bookmarks" }}
+          />
           <Screen name="PostDetailsScreen" component={PostDetailsScreen} />
-          <Screen name="SearchScreen" component={SearchScreen} />
+          <Screen
+            name="SearchScreen"
+            component={SearchScreen}
+            options={{ headerTitle: "Search" }}
+          />
+          <Screen name="MyProfileScreen" component={MyProfileScreen} />
+          <Screen name="UserProfileScreen" component={UserProfileScreen} />
         </Group>
       )}
     </Navigator>
