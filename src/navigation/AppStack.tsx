@@ -6,11 +6,10 @@ import {
   BookmarksScreen,
   HomeScreen,
   LoginScreen,
-  MyProfileScreen,
   PostDetailsScreen,
   RegisterScreen,
   SearchScreen,
-  UserProfileScreen,
+  ProfileScreen,
 } from "../screens";
 import { AuthContext } from "../context/AuthContext";
 
@@ -18,13 +17,13 @@ const Stack = createNativeStackNavigator<AppStackParams>();
 
 export const AppStack = () => {
   const { Navigator, Screen, Group } = Stack;
-  const { token, userId } = useContext(AuthContext);
+  const { token, user } = useContext(AuthContext);
 
   const admin = false;
 
   return (
     <Navigator>
-      {!token && !userId ? (
+      {!token && !user ? (
         <Group screenOptions={{ headerShown: false }}>
           <Screen name="LoginScreen" component={LoginScreen} />
           <Screen name="RegisterScreen" component={RegisterScreen} />
@@ -48,8 +47,14 @@ export const AppStack = () => {
             component={SearchScreen}
             options={{ headerTitle: "Search" }}
           />
-          <Screen name="MyProfileScreen" component={MyProfileScreen} />
-          <Screen name="UserProfileScreen" component={UserProfileScreen} />
+
+          <Screen
+            name="ProfileScreen"
+            component={ProfileScreen}
+            options={({ route }) => ({
+              headerTitle: route.params.username,
+            })}
+          />
         </Group>
       )}
     </Navigator>

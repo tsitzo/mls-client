@@ -3,10 +3,9 @@ import BookmarksScreen from "./BookmarksScreen";
 import HomeScreen from "./HomeScreen";
 import LoginScreen from "./LoginScreen";
 import PostDetailsScreen from "./PostDetailsScreen";
-import UserProfileScreen from "./UserProfileScreen";
+import ProfileScreen from "./ProfileScreen";
 import RegisterScreen from "./RegisterScreen";
 import SearchScreen from "./SearchScreen";
-import MyProfileScreen from "./MyProfileScreen";
 
 export {
   AdminScreen,
@@ -14,8 +13,7 @@ export {
   HomeScreen,
   LoginScreen,
   PostDetailsScreen,
-  MyProfileScreen,
-  UserProfileScreen,
+  ProfileScreen,
   RegisterScreen,
   SearchScreen,
 };
